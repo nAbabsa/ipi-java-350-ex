@@ -117,7 +117,7 @@ public class EmployeService {
             performance = employe.getPerformance() + 1;
         }
         //Cas 5
-        else if(caTraite > objectifCa*1.2){
+        else {
             performance = employe.getPerformance() + 4;
         }
         //Si autre cas, on reste à la performance de base.
