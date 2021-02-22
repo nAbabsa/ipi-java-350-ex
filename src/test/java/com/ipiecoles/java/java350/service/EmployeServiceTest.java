@@ -44,7 +44,7 @@ import static org.mockito.Mockito.times;
     }
 @ParameterizedTest
 @CsvSource({"C00001,1500,1000,1,6", "C00001, 800, 1000, 5,4", "C00001, 1055, 1000, 5,7", "C00001, 1000, 1000,5,6" })
-public void testCalculPerformanceCommercial(String matricule, Long caTraite, Long objectifCa, Integer perfBase, Integer perfAttendu) throws EmployeException {
+ void testCalculPerformanceCommercial(String matricule, Long caTraite, Long objectifCa, Integer perfBase, Integer perfAttendu) throws EmployeException {
     //Given
     Employe employe = new Employe("Marc", "Davis", matricule, LocalDate.now(), Entreprise.SALAIRE_BASE, perfBase, 1.0);
     Mockito.when(employeRepository.findByMatricule(matricule)).thenReturn(employe);

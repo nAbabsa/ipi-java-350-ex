@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class EmployeTest{
+ class EmployeTest{
 
 
 @ParameterizedTest
     @CsvSource({"5000,0.18,5900", "1500, 0.36,2040", "8000, 0.80,14400"
 })
 
-    public void testAugmenterSalaire(Double salaire,Double pourcentage, Double salaireAugmente){
+     void testAugmenterSalaire(Double salaire,Double pourcentage, Double salaireAugmente){
 
         //given
         Employe employe = new Employe();
@@ -28,7 +28,7 @@ public class EmployeTest{
     }
     @ParameterizedTest
     @CsvSource({"2019,8", "2021,10", "2022,10", "2032,11"})
-    public void nbRtt(int annee, int nombreRtt){
+     void nbRtt(int annee, int nombreRtt){
     //given
     Employe employe = new Employe();
 

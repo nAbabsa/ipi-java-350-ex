@@ -27,7 +27,7 @@ import java.time.LocalDate;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
- class EmployeRepositoryTestIntegration {
+ class EmployeRepositoryIntegrationTest {
 
 
 
