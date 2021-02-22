@@ -18,7 +18,7 @@ import java.util.List;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-class EmployeServiceIntégrationTest  {
+class EmployeServiceIntegrationTest  {
     @Autowired
     EmployeService employeservice;
     @Autowired
