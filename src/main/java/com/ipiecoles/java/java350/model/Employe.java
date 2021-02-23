@@ -226,9 +226,6 @@ public class Employe {
         this.tempsPartiel = tempsPartiel;
     }
 
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nom, prenom, matricule, dateEmbauche, salaire, performance);
-    }
+
+ 
 }
