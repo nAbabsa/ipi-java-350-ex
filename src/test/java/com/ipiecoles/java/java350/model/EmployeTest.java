@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 
 @ParameterizedTest
-    @CsvSource({"5000,0.18,5900", "1500, 0.36,2040", "8000, 0.80,14400"
+    @CsvSource({"5000,0.18,5900", "1500, 0.36,2040", "8000, 0.80,14400", "100, 80,180"
 })
 
      void testAugmenterSalaire(Double salaire,Double pourcentage, Double salaireAugmente){

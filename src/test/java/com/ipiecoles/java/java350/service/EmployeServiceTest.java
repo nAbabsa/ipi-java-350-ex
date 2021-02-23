@@ -65,7 +65,7 @@ import static org.mockito.Mockito.when;
 }
     @Test
 
-    public void testPerformanceCommercialcaTraiteNull() throws EmployeException {
+     void testPerformanceCommercialcaTraiteNull() throws EmployeException {
 //given
         Employe employe = new Employe("Marc", "Davis", "C00001", LocalDate.now(), Entreprise.SALAIRE_BASE,Entreprise.PERFORMANCE_BASE,1.0);
         //Mockito.when(employeRepository.findByMatricule("C00001")).thenReturn(employe);
@@ -86,7 +86,7 @@ import static org.mockito.Mockito.when;
     }
     @Test
 
-    public void testPerformanceCommercialobjCaNull() throws EmployeException {
+     void testPerformanceCommercialobjCaNull() throws EmployeException {
 //given
         Employe employe = new Employe("Marc", "Davis", "C00001", LocalDate.now(), Entreprise.SALAIRE_BASE,Entreprise.PERFORMANCE_BASE,1.0);
         //Mockito.when(employeRepository.findByMatricule("C00001")).thenReturn(employe);
@@ -106,7 +106,7 @@ import static org.mockito.Mockito.when;
         }
     }
     @Test
-    public void testPerformanceCommercialmatriculeNull() throws EmployeException {
+     void testPerformanceCommercialmatriculeNull() throws EmployeException {
 //given
         Employe employe = new Employe("Marc", "Davis", "C00001", LocalDate.now(), Entreprise.SALAIRE_BASE,Entreprise.PERFORMANCE_BASE,1.0);
         //Mockito.when(employeRepository.findByMatricule("C00001")).thenReturn(employe);
@@ -128,7 +128,7 @@ import static org.mockito.Mockito.when;
 
     @Test
 
-    public void testPerformanceCommercialmatriculenonNull() throws EmployeException {
+     void testPerformanceCommercialmatriculenonNull() throws EmployeException {
 //given
         Employe employe = new Employe("Marc", "Davis", "C00001", LocalDate.now(), Entreprise.SALAIRE_BASE,Entreprise.PERFORMANCE_BASE,1.0);
         when(employeRepository.findByMatricule("C00001")).thenReturn(employe);
@@ -142,7 +142,7 @@ import static org.mockito.Mockito.when;
 
     @Test
 
-    public void testEmbaucheEmployeTechnicienPleinTempsBts() throws EmployeException {
+     void testEmbaucheEmployeTechnicienPleinTempsBts() throws EmployeException {
         //Given
         String nom = "Doe";
         String prenom = "John";
@@ -170,7 +170,7 @@ import static org.mockito.Mockito.when;
 
     @Test
 
-    public void testEmbaucheEmployeManagerMiTempsMaster() throws EmployeException {
+     void testEmbaucheEmployeManagerMiTempsMaster() throws EmployeException {
         //Given
         String nom = "Doe";
         String prenom = "John";
@@ -198,7 +198,7 @@ import static org.mockito.Mockito.when;
 
     @Test
 
-    public void testEmbaucheEmployeManagerMiTempsMasterNoLastMatricule() throws EmployeException {
+     void testEmbaucheEmployeManagerMiTempsMasterNoLastMatricule() throws EmployeException {
         //Given
         String nom = "Doe";
         String prenom = "John";
@@ -219,7 +219,7 @@ import static org.mockito.Mockito.when;
 
     @Test
 
-    public void testEmbaucheEmployeManagerMiTempsMasterExistingEmploye(){
+     void testEmbaucheEmployeManagerMiTempsMasterExistingEmploye(){
         //Given
         String nom = "Doe";
         String prenom = "John";
@@ -243,7 +243,7 @@ import static org.mockito.Mockito.when;
 
     @Test
 
-    public void testEmbaucheEmployeManagerMiTempsMaster99999(){
+     void testEmbaucheEmployeManagerMiTempsMaster99999(){
         //Given
         String nom = "Doe";
         String prenom = "John";
