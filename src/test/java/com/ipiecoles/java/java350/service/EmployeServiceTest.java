@@ -24,9 +24,6 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.github.javaparser.ast.expr.BinaryExpr.Operator.times;
-import static org.mockito.Mockito.times;
-
 @RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
 
@@ -52,7 +49,7 @@ import static org.mockito.Mockito.times;
     //When
     employeService.calculPerformanceCommercial(matricule, caTraite, objectifCa);
     ArgumentCaptor<Employe> employeArgumentCaptor = ArgumentCaptor.forClass(Employe.class);
-    Mockito.verify(employeRepository, times(1)).save(employeArgumentCaptor.capture());
+    Mockito.verify(employeRepository, Mockito.times(1)).save(employeArgumentCaptor.capture());
 
     //Then
     Assertions.assertThat(employeArgumentCaptor.getValue().getPerformance()).isEqualTo(perfAttendu);
@@ -66,7 +63,7 @@ import static org.mockito.Mockito.times;
         //when
         //employeService.calculPerformanceCommercial("C00001",null, 1000L);
         //ArgumentCaptor<Employe> EmpPerf = ArgumentCaptor.forClass(Employe.class);
-        //Mockito.verify(employeRepository, times(1)).save(EmpPerf.capture());
+        //Mockito.verify(employeRepository, Mockito.times(1)).save(EmpPerf.capture());
         //then
 
         try{
@@ -86,7 +83,7 @@ import static org.mockito.Mockito.times;
         //when
         //employeService.calculPerformanceCommercial("C00001",1000L, null);
         //ArgumentCaptor<Employe> EmpPerf = ArgumentCaptor.forClass(Employe.class);
-        //Mockito.verify(employeRepository, times(1)).save(EmpPerf.capture());
+        //Mockito.verify(employeRepository, Mockito.times(1)).save(EmpPerf.capture());
         //then
 
         try{
@@ -106,7 +103,7 @@ import static org.mockito.Mockito.times;
         //when
 
         //ArgumentCaptor<Employe> EmpPerf = ArgumentCaptor.forClass(Employe.class);
-        //Mockito.verify(employeRepository,Mockito.times(1)).save(EmpPerf.capture());
+        //Mockito.verify(employeRepository,Mockito.Mockito.times(1)).save(EmpPerf.capture());
         //then
         try{
             employeService.calculPerformanceCommercial(null,1000L, 1000L);
@@ -127,7 +124,7 @@ import static org.mockito.Mockito.times;
         //when
         employeService.calculPerformanceCommercial("C00001",1000L, 1000L);
         ArgumentCaptor<Employe> EmpPerf = ArgumentCaptor.forClass(Employe.class);
-        Mockito.verify(employeRepository, times(1)).save(EmpPerf.capture());
+        Mockito.verify(employeRepository, Mockito.times(1)).save(EmpPerf.capture());
         //then
         Assertions.assertThat(EmpPerf.getValue().getPerformance()).isEqualTo(2);
     }
