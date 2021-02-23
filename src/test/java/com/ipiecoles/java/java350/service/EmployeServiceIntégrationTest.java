@@ -33,7 +33,8 @@ class EmployeServiceIntegrationTest  {
         employerepository.deleteAll();
     }
     @Test
-    public void integrationEmbaucheEmploye() throws EmployeException {
+
+     void integrationEmbaucheEmploye() throws EmployeException {
         //Given
         employerepository.save(new Employe("Doe", "John", "T12345", LocalDate.now(), Entreprise.SALAIRE_BASE, 1, 1.0));
         String nom = "Doe";
