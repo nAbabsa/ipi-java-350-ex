@@ -14,7 +14,7 @@ public class Employe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id
+    private Long id;
 
     private String nom;
 
@@ -48,6 +48,9 @@ public class Employe {
      * @return
      */
     public Integer getNombreAnneeAnciennete() {
+        if (this.dateEmbauche == null || dateEmbauche.isAfter(LocalDate.now())){
+            return null;
+        }
         return LocalDate.now().getYear() - dateEmbauche.getYear();
     }
 
@@ -59,19 +62,31 @@ public class Employe {
         return getNbRtt(LocalDate.now());
     }
 
-    public Integer getNbRtt(LocalDate d){
-        int i1 = d.isLeapYear() ? 365 : 366;int var = 104;
-        switch (LocalDate.of(d.getYear(),1,1).getDayOfWeek()){
-        case THURSDAY: if(d.isLeapYear()) var =  var + 1; break;
-        case FRIDAY:
-        if(d.isLeapYear()) var =  var + 2;
-        else var =  var + 1;
-case SATURDAY:var = var + 1;
-                    break;
+    public Integer getNbRtt(LocalDate dateReference) {
+        int nbJourAnnee = dateReference.isLeapYear() ? 366 : 365;
+        int nbSamediDimanche = 104;
+
+        // on regarde le  la jour de l'année pour ajouté un jour de week .
+        switch (LocalDate.of(dateReference.getYear(), 1, 1).getDayOfWeek()) {
+            case THURSDAY:
+                if (dateReference.isLeapYear()) nbSamediDimanche = nbSamediDimanche + 1;
+                break;
+            case FRIDAY:
+                // si on commence le vendredi et année bisextile.
+                if (dateReference.isLeapYear()) nbSamediDimanche = nbSamediDimanche + 2;
+                else nbSamediDimanche = nbSamediDimanche + 1;
+                break;
+            case SATURDAY:
+                nbSamediDimanche = nbSamediDimanche + 1;
+                break;
+            default :
+                //Switch Requiere Default
         }
-        int monInt = (int) Entreprise.joursFeries(d).stream().filter(localDate ->
-                localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
-        return (int) Math.ceil((i1 - Entreprise.NB_JOURS_MAX_FORFAIT - var - Entreprise.NB_CONGES_BASE - monInt) * tempsPartiel);
+        // Calcul nombre de jour férié ne tombant pas le week end :
+        int nbJourFeriesSemaine = (int) Entreprise.joursFeries(dateReference).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
+
+
+        return (int) Math.ceil((nbJourAnnee - Entreprise.NB_JOURS_MAX_FORFAIT - nbSamediDimanche - Entreprise.NB_CONGES_BASE - nbJourFeriesSemaine) * tempsPartiel);
     }
 
     /**
@@ -110,7 +125,14 @@ case SATURDAY:var = var + 1;
     }
 
     //Augmenter salaire
-    //public void augmenterSalaire(double pourcentage){}
+    public void augmenterSalaire(double pourcentage){
+        //Test si l'utilisateur initialise son pourcentage en nombre entier (10 = 10%) au lieu de 0.1 = 10%
+        if (pourcentage >= 1 ) {
+            pourcentage = pourcentage/100;
+
+        }
+        this.salaire += this.salaire * pourcentage;
+    }
 
     public Long getId() {
         return id;
@@ -207,22 +229,6 @@ case SATURDAY:var = var + 1;
         this.tempsPartiel = tempsPartiel;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Employe)) return false;
-        Employe employe = (Employe) o;
-        return Objects.equals(id, employe.id) &&
-                Objects.equals(nom, employe.nom) &&
-                Objects.equals(prenom, employe.prenom) &&
-                Objects.equals(matricule, employe.matricule) &&
-                Objects.equals(dateEmbauche, employe.dateEmbauche) &&
-                Objects.equals(salaire, employe.salaire) &&
-                Objects.equals(performance, employe.performance);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nom, prenom, matricule, dateEmbauche, salaire, performance);
-    }
+
 }
