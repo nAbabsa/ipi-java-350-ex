@@ -13,8 +13,9 @@ import com.ipiecoles.java.java350.model.Poste;
 import com.ipiecoles.java.java350.repository.EmployeRepository;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -105,7 +106,6 @@ import static org.mockito.Mockito.when;
         }
     }
     @Test
-
     public void testPerformanceCommercialmatriculeNull() throws EmployeException {
 //given
         Employe employe = new Employe("Marc", "Davis", "C00001", LocalDate.now(), Entreprise.SALAIRE_BASE,Entreprise.PERFORMANCE_BASE,1.0);
@@ -165,7 +165,7 @@ import static org.mockito.Mockito.when;
         Assertions.assertThat(employeArgumentCaptor.getValue().getTempsPartiel()).isEqualTo(tempsPartiel );
 
         //1521.22 * 1.2 * 1.0
-        Assertions.assertThat(employeArgumentCaptor.getValue().getSalaire().doubleValue()).isEqualTo(1825.46 );
+        Assertions.assertThat(employeArgumentCaptor.getValue().getSalaire().doubleValue()).isEqualTo(1825.464 );
     }
 
     @Test
@@ -193,7 +193,7 @@ import static org.mockito.Mockito.when;
         Assertions.assertThat(employeArgumentCaptor.getValue().getTempsPartiel()).isEqualTo(tempsPartiel);
 
         //1521.22 * 1.4 * 0.5
-        Assertions.assertThat( employeArgumentCaptor.getValue().getSalaire().doubleValue()).isEqualTo(1064.85);
+        Assertions.assertThat( employeArgumentCaptor.getValue().getSalaire().doubleValue()).isEqualTo(1064.854);
     }
 
     @Test
@@ -242,7 +242,7 @@ import static org.mockito.Mockito.when;
     }
 
     @Test
-    
+
     public void testEmbaucheEmployeManagerMiTempsMaster99999(){
         //Given
         String nom = "Doe";
